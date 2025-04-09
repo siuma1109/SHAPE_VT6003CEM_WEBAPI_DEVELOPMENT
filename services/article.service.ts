@@ -1,6 +1,6 @@
 import { Validator, ValidationError } from 'jsonschema';
 import { RouterContext } from 'koa-router';
-import { article } from '../schemas/article.schema';
+import article from '../schemas/article.json';
 
 const v = new Validator()
 export const validateArticle = async (ctx: RouterContext, next: any) => {
