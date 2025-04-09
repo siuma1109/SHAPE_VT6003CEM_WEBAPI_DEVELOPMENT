@@ -12,6 +12,11 @@ info:
 servers:
 - url: '127.0.0.1/api/v1'
 description: Development server
+tags:
+- name: Users
+  description: API endpoints for user management.
+- name: Articles
+  description: Access and perform CRUD operations on blog entries.
 paths:
   /users/{id}:
     parameters:
