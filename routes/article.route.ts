@@ -26,6 +26,7 @@ const createArticle = async (ctx: RouterContext, next: any) => {
     // The body parser gives us access to the request body on ctx.request.body.
     // Use this to extract the title and fullText we were sent.
     let { title, alltext } = ctx.request.body as { title: string, alltext: string };
+    console.log(title, alltext)
     // In turn, define a new article for addition to the array.
     let newArticle = { title: title, alltext: alltext };
     let insertData = await article_model.add(newArticle)

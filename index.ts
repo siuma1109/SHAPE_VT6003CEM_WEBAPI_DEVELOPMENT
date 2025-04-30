@@ -4,6 +4,7 @@ import logger from "koa-logger";
 import json from "koa-json";
 import bodyParser from "koa-bodyparser";
 import {sequelize} from "./helpers/database";
+import cors from '@koa/cors';
 sequelize.sync();
 
 import { router as AuthRoute } from "./routes/auth.route";
@@ -31,6 +32,8 @@ app.use(async (ctx: RouterContext, next: any) => {
         ctx.body = { err: err };
     }
 })
+
+app.use(cors());
 
 app.listen(10888, () => {
     console.log("Koa Started");
