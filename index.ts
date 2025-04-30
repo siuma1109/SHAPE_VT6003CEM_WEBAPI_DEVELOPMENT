@@ -10,6 +10,7 @@ sequelize.sync();
 import { router as AuthRoute } from "./routes/auth.route";
 import { router as ArticleRouter } from "./routes/article.route";
 import { router as UserRouter } from "./routes/user.route";
+import serve from "koa-static";
 
 const app: Koa = new Koa();
 
@@ -38,3 +39,5 @@ app.use(cors());
 app.listen(10888, () => {
     console.log("Koa Started");
 })
+
+app.use(serve('./docs'))

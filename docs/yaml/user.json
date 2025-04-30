@@ -1,0 +1,45 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+        "article": {
+            "id": "/user",
+            "title": "User",
+            "description": "An user in the blog",
+            "type": "object",
+            "properties": {
+                "firstname": {
+                    "description": "Firstname of the user",
+                    "type": "string"
+                },
+                "lastname": {
+                    "description": "lastname of the user",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "username of the user",
+                    "type": "string"
+                },
+                "email": {
+                    "description": "email of the user",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "password of the user",
+                    "type": "string"
+                },
+                "avatar": {
+                    "description": "avatar of the user",
+                    "type": "string"
+                },
+                "about": {
+                    "description": "about of the user",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "username",
+                "email"
+            ]
+        }
+    }
+}

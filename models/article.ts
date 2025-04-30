@@ -51,8 +51,8 @@ export const update = async (article: any, id: number) => {
     let query = `UPDATE articles SET ${param} WHERE id = ?`;
     try {
         const [data, result] = await db.update_query(query, [...values, id]);
-        const [article] = data;
-        return article;
+        const updatedArticle = await getById(id);
+        return updatedArticle;
     } catch (err: any) {
         return err;
     }

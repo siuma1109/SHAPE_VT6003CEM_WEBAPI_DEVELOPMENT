@@ -34,7 +34,7 @@ const createArticle = async (ctx: RouterContext, next: any) => {
     // Finally send back appropriate JSON and status code.
     // Once we move to a DB store, the newArticle sent back will now have its ID.
     ctx.status = 201;
-    ctx.body = createdArticle[0];
+    ctx.body = createdArticle;
     await next();
 }
 const updateArticle = async (ctx: RouterContext, next: any) => {
@@ -44,7 +44,7 @@ const updateArticle = async (ctx: RouterContext, next: any) => {
     let articles = await article_model.getById(id)
     if (Object.keys(articles).length > 0) {
         let updateData = ctx.request.body as { title: string, alltext: string };
-        const article = article_model.update(updateData, id);
+        const article = await article_model.update(updateData, id);
         ctx.body = article;
         ctx.status = 200;
     } else {
