@@ -4,12 +4,12 @@ import { Article } from './article_model';
 //get a single article by its id
 export const getById = async (id: any) => {
     const article = await Article.findOne({
-        where: {id: id},
+        where: { id: id },
         rejectOnEmpty: true
     })
 
     return article
-    
+
     let query = "SELECT * FROM articles WHERE ID = ?"
     let values = [id]
     let data = await db.run_query(query, values);
@@ -32,9 +32,11 @@ export const add = async (article: any) => {
     param = param.slice(0, -1);
     let query = `INSERT INTO articles (${key}) VALUES (${param}) RETURNING id`;
     try {
-        const [data, result] = await db.run_insert(query, values);
-        const [article] = data;
-        return article;
+        const result = await db.run_insert(query, values);
+
+        const [articleArray] = result;
+        const [articleObject]: any = articleArray;
+        return articleObject;
     } catch (err: any) {
         return err;
     }
